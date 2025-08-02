@@ -10,8 +10,7 @@
 #define TRUE 1
 #define FALSE 0
 #define strbool char
-#define STREQUAL 1
-#define STRDIF 2
+#define STREQUAL(s1, s2) (strcmp((s1), (s2)) == 0)
 
 enum Resource {
     DEPLOY,
@@ -33,16 +32,17 @@ int main(int argc, char **argv){
         printf("\nFow which kubernetes resource do you want to create a .yaml?: ");
         string resource_type[MAX_ENUM_INPUT_SIZE];
         scanf(" %s", &resource_type);
-        if(strcmp(resource_type, "deploy") == STREQUAL){
+        if(STREQUAL(resource_type, "deploy")||STREQUAL(resource_type, "Deploy")){
             deployFunction(targetFile);
-        }else if(strcmp(resource_type, "service") == STREQUAL){
+        }else if(STREQUAL(resource_type, "service")||STREQUAL(resource_type, "Service")){
             serviceFunction(targetFile);
-        }else if(strcmp(resource_type, "cronjob") == STREQUAL){
+        }else if(STREQUAL(resource_type, "cronjob")||STREQUAL(resource_type, "cronJob")||STREQUAL(resource_type, "CronJob")||STREQUAL(resource_type, "Cronjob")){
             cronJobFunction(targetFile);
-        }else if(strcmp(resource_type, "ingress") == STREQUAL){
+        }else if(STREQUAL(resource_type, "ingress")||STREQUAL(resource_type, "Ingress")){
             ingressFunction(targetFile);
         }else{
             printf("\n Invalid resource. Available resources are: deploy, service, cronjob, ingress\n");
+            return 1;
         }
 
         verifyIsTerminated(&isTerminated);

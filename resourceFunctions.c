@@ -14,10 +14,15 @@ enum Resource {
     INGRESS,
 };
 void deployFunction(FILE *target){
+    printf("Deploy triggered\n");
 }
 void serviceFunction(FILE *target){
+    printf("Service triggered\n");
 }
 void cronJobFunction(FILE *target){
+    printf("CronJob triggered\n");
+
 }
 void ingressFunction(FILE *target){
+    printf("Ingress triggered\n");
 }
