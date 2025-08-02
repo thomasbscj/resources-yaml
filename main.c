@@ -29,8 +29,8 @@ int main(int argc, char **argv){
     strcpy(filePath, argv[1]);
     FILE *targetFile = fopen(filePath, "w");
     bool isTerminated = FALSE;
-    while(isTerminated != FALSE){
-        printf("\nFow which resource do you want to create a .yaml?: ");
+    while(!isTerminated){
+        printf("\nFow which kubernetes resource do you want to create a .yaml?: ");
         string resource_type[MAX_ENUM_INPUT_SIZE];
         scanf(" %s", &resource_type);
         if(strcmp(resource_type, "deploy") == STREQUAL){
@@ -47,6 +47,7 @@ int main(int argc, char **argv){
 
         verifyIsTerminated(&isTerminated);
     }
+printf("Thx for using kymlgen :)\n");
 return 0;
 
 }
